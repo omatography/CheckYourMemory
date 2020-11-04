@@ -4,6 +4,7 @@ var boxList = document.querySelectorAll(".box");
 var first ;
 var second;
 var isClicked = false;
+var count = 0;
 
 boxList.forEach((box) => {
     box.addEventListener('click',()=>{
@@ -28,7 +29,10 @@ var result = () =>{
         first = null;
         second = null;
         isClicked=false;
-        
+        count = count+2;
+        if(count == 16){
+           toggle();
+        }
     }
     else{
         setTimeout(()=>{
@@ -37,18 +41,13 @@ var result = () =>{
             first = null;
             second = null;
             isClicked=false;
-        },1000);
+        },500);
         
     }
 }
 
-var count = 0;
-boxList.forEach((box)=>{
-    if(box.dataset.checked === 'y'){
-        count=count+1;
-    }
-})
 
-if(count === 16){
+
+if(count == 16){
     console.log("winner");
 }
